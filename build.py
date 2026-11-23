@@ -51,7 +51,7 @@ head_extra = ('<script type="application/ld+json">' + json.dumps(article_ld) + '
   '<style>.byline{font:600 15px/1.3 var(--sans);color:var(--text-secondary);margin:0 0 6px}.byline a{color:inherit}'
   '.keyfacts{background:var(--surface-2);border-radius:8px;padding:16px 20px;margin:20px 0 0;max-width:720px}'
   '.keyfacts h2{font:700 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin:0 0 10px}'
-  '.keyfacts ul{margin:0;padding-left:1.1em}.keyfacts li{margin:0 0 8px;font:400 17px/1.45 var(--serif)}</style>\n'
+  '.keyfacts .kfscope{margin:10px 0 0;font:400 14px/1.4 var(--sans);color:var(--text-muted)}.keyfacts ul{margin:0;padding-left:1.1em}.keyfacts li{margin:0 0 8px;font:400 17px/1.45 var(--serif)}</style>\n'
   + GOATCOUNTER)
 cut = src.index("</style>") + len("</style>")
 body = src[cut:]
@@ -60,11 +60,14 @@ byline = ('<p class="byline">By <a href="' + SITE + '/" rel="author">Rod Feuer</
           '<time datetime="' + PUBLISHED + '">November 2026</time></p>\n')
 keyfacts = (
  '<section class="keyfacts" aria-labelledby="kf"><h2 id="kf">Key findings</h2><ul>'
- "<li>597 AI deals and $357B in round size: every AI round of $5M or more with a public size that six VC firms joined, January 2024 to October 2026.</li>"
- "<li>Agents drew 43% of the deals but 7% of the dollars. Frontier labs drew 3% of the deals and 70% of the dollars; OpenAI's $122B round is about a third of all the dollars.</li>"
- "<li>Systems of record drew about 0.2% of the dollars (19 deals). Compute startups, mostly inference platforms, drew 2.5%.</li>"
- "<li>Strategy predicts durable profit goes to chipmakers, hyperscalers, and systems of record. Two likely reasons so few venture dollars reached them: the incumbents don't raise venture rounds, and few records startups raised rounds at all. The data can't say which matters more.</li>"
- "</ul></section>\n")
+ "<li>AI's most defensible business may be one VCs can't buy. In these rounds, startups building systems of record\u2014the category Salesforce, SAP, and ServiceNow already own\u2014got only 0.2% of the dollars.</li>"
+ "<li>Agents had the most deals, but frontier labs got the most dollars. Agent startups were 43% of the deals and got 7% of the dollars. Frontier labs were 3% of the deals and got 70%, and OpenAI's $122B round alone is about a third of all the dollars.</li>"
+ "<li>Strategy predicts durable profit goes to chipmakers, hyperscalers, and systems of record, yet the dollars in these rounds mostly went elsewhere. Even compute startups, mostly inference platforms that rent chips, got only 2.5%.</li>"
+ "<li>Two likely reasons so few venture dollars reached the companies strategy expects to profit: 1) incumbents don't raise venture rounds, and 2) few systems-of-record startups raised rounds at all. The data can't yet say which matters more.</li>"
+ "<li>A startup's way into records has two routes, and both start with an agent doing the work. In the first, the agent writes its own record of that work, which is still a small bet. In the second, the agent acts on records other systems hold; the latter is likely riskier because the incumbents control access to those records.</li>"
+ "</ul>"
+ '<p class="kfscope">The data include 597 AI rounds of $5M or more with a publicly reported size, $357B in all, that six VC firms joined from January 2024 to October 2026. There is no market baseline.</p>'
+ "</section>\n")
 m = re.search(r'<p class="dateline">.*?</p>\n', body, flags=re.S)
 assert m, "dateline not found"
 body = body[:m.start()] + byline + m.group(0) + keyfacts + body[m.end():]
