@@ -36,7 +36,7 @@ head_meta = f'''<!doctype html>
 <meta name="twitter:image" content="{SITE}/og.png">
 <style>:root{{color-scheme:light}}body{{margin:0;font:14px system-ui,sans-serif}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
 '''
-person = {"@type": "Person", "name": "Rod Feuer", "url": SITE + "/", "sameAs": [LINKEDIN, X_PROFILE]}
+person = {"@type": "Person", "name": "Rod Feuer", "url": SITE + "/", "image": SITE + "/headshot.jpg", "sameAs": [LINKEDIN, X_PROFILE]}
 article_ld = {
     "@context": "https://schema.org", "@type": "Article", "headline": TITLE, "description": DESC,
     "author": person, "publisher": person, "inLanguage": "en",

@@ -21,7 +21,9 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 19px/1.55 var(--serif);padding:56px max(20px,env(safe-area-inset-right,0px)) 72px max(20px,env(safe-area-inset-left,0px))}
 main{max-width:680px;margin:0 auto}
-h1{font:800 40px/1.05 var(--sans);letter-spacing:-.015em;margin:0 0 6px}
+h1{font:800 40px/1.05 var(--sans);letter-spacing:-.015em;margin:0}
+.who{display:flex;align-items:center;gap:20px}
+.who img{width:112px;height:112px;border-radius:50%;object-fit:cover;object-position:50% 22%;flex:none;border:1px solid var(--rule)}
 .kicker{font:700 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:48px 0 14px}
 a{color:var(--accent);text-underline-offset:3px}
 .post{border-top:2px solid var(--ink);padding-top:16px}
@@ -30,11 +32,11 @@ a{color:var(--accent);text-underline-offset:3px}
 .post p{margin:8px 0 0;color:var(--muted)}
 .date{font:500 14px/1 var(--sans);color:var(--muted);margin-top:10px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "Rod Feuer", "url": "https://rodfeuer.com/"}, {"@type": "Person", "name": "Rod Feuer", "url": "https://rodfeuer.com/", "sameAs": ["https://www.linkedin.com/in/rodfeuer/", "https://x.com/rodfeuer"]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "Rod Feuer", "url": "https://rodfeuer.com/"}, {"@type": "Person", "name": "Rod Feuer", "url": "https://rodfeuer.com/", "image": "https://rodfeuer.com/headshot.jpg", "sameAs": ["https://www.linkedin.com/in/rodfeuer/", "https://x.com/rodfeuer"]}]}</script>
 </head>
 <body>
 <main>
-<h1>Rod Feuer</h1>
+<div class="who"><img src="headshot.jpg" width="112" height="112" alt="Rod Feuer"><h1>Rod Feuer</h1></div>
 <p class="kicker">Writing</p>
 <div class="post">
 <a href="where-the-ai-money-goes/">Where the AI money goes</a>
