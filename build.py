@@ -10,6 +10,7 @@ OUT = Path(__file__).resolve().parent / "where-the-ai-money-goes" / "index.html"
 SITE = "https://rodfeuer.com"
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 LINKEDIN = "https://www.linkedin.com/in/rodfeuer/"
+X_PROFILE = "https://x.com/rodfeuer"
 PUBLISHED = "2026-11"      # month only: the exact first-publish day is not recorded
 MODIFIED = "2026-11-22"
 TITLE = "Where the AI money goes"
@@ -35,7 +36,7 @@ head_meta = f'''<!doctype html>
 <meta name="twitter:image" content="{SITE}/og.png">
 <style>:root{{color-scheme:light}}body{{margin:0;font:14px system-ui,sans-serif}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
 '''
-person = {"@type": "Person", "name": "Rod Feuer", "url": SITE + "/", "sameAs": [LINKEDIN]}
+person = {"@type": "Person", "name": "Rod Feuer", "url": SITE + "/", "sameAs": [LINKEDIN, X_PROFILE]}
 article_ld = {
     "@context": "https://schema.org", "@type": "Article", "headline": TITLE, "description": DESC,
     "author": person, "publisher": person, "inLanguage": "en",
