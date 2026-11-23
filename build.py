@@ -56,9 +56,8 @@ body = src[cut:]
 byline = ('<p class="byline">By <a href="' + SITE + '/" rel="author">Rod Feuer</a> \u00b7 '
           '<time datetime="' + PUBLISHED + '">November 2026</time></p>\n')
 
-m = re.search(r'<p class="dateline">.*?</p>\n', body, flags=re.S)
-assert m, "dateline not found"
-body = body[:m.start()] + byline + m.group(0) + body[m.end():]
+i = body.index('<section class="keyfacts"')
+body = body[:i] + byline + body[i:]
 # count clicks on outbound links (GoatCounter reads data-goatcounter-click); one event name per link: ext-<host>/<first path segment>
 def tag_outbound(m):
     host, path = m.group(2), m.group(3).strip("/").split("/")[0]
