@@ -40,6 +40,7 @@ head_meta = f'''<!doctype html>
 <style>:root{{color-scheme:light}}body{{margin:0;font:14px system-ui,sans-serif}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
 '''
 person = {"@type": "Person", "@id": "https://rodfeuer.com/#rod", "name": "Rod Feuer", "url": SITE + "/", "image": SITE + "/headshot.jpg", "description": "Rod Feuer co-founded Costello, acquired by Salesloft, and advises tech companies on strategy and positioning. He writes about AI.", "sameAs": [LINKEDIN, X_PROFILE]}
+GOATCOUNTER = '<script data-goatcounter="https://rodfeuer.goatcounter.com/count"\n        async src="//gc.zgo.at/count.js"></script>\n'
 article_ld = {
     "@context": "https://schema.org", "@type": "Article", "headline": TITLE, "description": DESC,
     "author": person, "publisher": person, "inLanguage": "en",
@@ -50,7 +51,8 @@ head_extra = ('<script type="application/ld+json">' + json.dumps(article_ld) + '
   '<style>.byline{font:600 15px/1.3 var(--sans);color:var(--text-secondary);margin:0 0 6px}.byline a{color:inherit}'
   '.keyfacts{background:var(--surface-2);border-radius:8px;padding:16px 20px;margin:20px 0 0;max-width:720px}'
   '.keyfacts h2{font:700 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin:0 0 10px}'
-  '.keyfacts ul{margin:0;padding-left:1.1em}.keyfacts li{margin:0 0 8px;font:400 17px/1.45 var(--serif)}</style>\n')
+  '.keyfacts ul{margin:0;padding-left:1.1em}.keyfacts li{margin:0 0 8px;font:400 17px/1.45 var(--serif)}</style>\n'
+  + GOATCOUNTER)
 cut = src.index("</style>") + len("</style>")
 body = src[cut:]
 # byline + machine-readable date, then key findings (all figures are stated in the article)
@@ -66,12 +68,18 @@ keyfacts = (
 m = re.search(r'<p class="dateline">.*?</p>\n', body, flags=re.S)
 assert m, "dateline not found"
 body = body[:m.start()] + byline + m.group(0) + keyfacts + body[m.end():]
+# count clicks on outbound links (GoatCounter reads data-goatcounter-click); one event name per link: ext-<host>/<first path segment>
+def tag_outbound(m):
+    host, path = m.group(2), m.group(3).strip("/").split("/")[0]
+    return m.group(1) + ' data-goatcounter-click="ext-' + host + ("/" + path if path else "") + '"'
+body = re.sub(r'(<a href="https?://(?!rodfeuer\.com)([^/"]+)(/[^"]*)?")', tag_outbound, body)
 # the one SVG icon without a label is decorative; the routes diagram needs a label
 body = body.replace('<svg width="18" height="18" viewBox="0 0 18 18" style="vertical-align:-4px;margin-right:4px">',
                     '<svg width="18" height="18" viewBox="0 0 18 18" style="vertical-align:-4px;margin-right:4px" aria-hidden="true">', 1)
 body = body.replace('<svg class="routes" width="100%" viewBox="0 0 793 534" role="img">',
                     '<svg class="routes" width="100%" viewBox="0 0 793 534" role="img" aria-label="Two routes into records and rules: become a new system of record, or become the system of intelligence">', 1)
-out = head_meta + src[:cut] + head_extra + "\n</head>\n<body>\n" + body + "\n</body>\n</html>\n"
+PRIVACY = '<p style="font:400 14px/1.4 var(--sans);color:var(--text-muted);max-width:720px;margin:48px auto 0;padding:0 20px">This site counts page views and link clicks with GoatCounter, which sets no cookies and does not track you across sites.</p>'
+out = head_meta + src[:cut] + head_extra + "\n</head>\n<body>\n" + body + PRIVACY + "\n</body>\n</html>\n"
 OUT.parent.mkdir(exist_ok=True)
 OUT.write_text(out, encoding="utf-8")
 print("wrote", OUT, len(out), "bytes (before pre-render)")
