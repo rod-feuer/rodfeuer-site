@@ -12,7 +12,7 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 LINKEDIN = "https://www.linkedin.com/in/rodfeuer/"
 X_PROFILE = "https://x.com/rodfeuer"
 PUBLISHED = "2026-11"      # month only: the exact first-publish day is not recorded
-MODIFIED = "2026-11-23"
+MODIFIED = "2026-11-25"
 TITLE = "Where the AI money goes"
 DESC = "597 AI deals and $357B across six VC firms: where strategy says durable profit goes, and where the dollars went."
 src = SRC.read_text(encoding="utf-8")
