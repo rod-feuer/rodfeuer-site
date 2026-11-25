@@ -28,14 +28,15 @@ h1{font:800 40px/1.05 var(--sans);letter-spacing:-.015em;margin:0}
 .who{display:flex;align-items:center;gap:20px}
 .who img{width:112px;height:112px;border-radius:50%;object-fit:cover;object-position:50% 22%;flex:none;border:1px solid var(--rule)}
 .bio{margin:28px 0 0}
-.kicker{font:700 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:48px 0 14px}
 a{color:var(--accent);text-underline-offset:3px}
-.post{border-top:2px solid var(--ink);padding-top:16px}
-.post a{font:800 26px/1.15 var(--sans);letter-spacing:-.01em;color:var(--ink);text-decoration:none}
-.post a:hover,.post a:focus-visible{text-decoration:underline}
-.post p{margin:8px 0 0;color:var(--muted)}
+section{border-top:1px solid var(--ink);margin-top:56px;padding-top:14px}
+.kicker{font:700 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
+.post a{display:block;text-wrap:balance;font:800 26px/1.15 var(--sans);letter-spacing:-.01em;color:var(--ink);text-decoration:underline;text-decoration-color:var(--rule);text-decoration-thickness:2px;text-underline-offset:5px}
+.post a:hover,.post a:focus-visible{text-decoration-color:var(--accent)}
+.post p{margin:8px 0 0;color:var(--muted);text-wrap:balance}
 .date{font:500 14px/1 var(--sans);color:var(--muted);margin-top:10px}
-.privacy{font:400 14px/1.4 var(--sans);color:var(--muted);margin:48px 0 0}
+.links{font:500 18px/1.4 var(--sans);margin:0}
+.privacy{font:400 13px/1.4 var(--sans);color:var(--muted);margin:72px 0 0;padding-top:14px;border-top:1px solid var(--rule)}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "Rod Feuer", "url": "https://rodfeuer.com/", "publisher": {"@id": "https://rodfeuer.com/#rod"}}, {"@type": "Person", "@id": "https://rodfeuer.com/#rod", "name": "Rod Feuer", "url": "https://rodfeuer.com/", "image": "https://rodfeuer.com/headshot.jpg", "description": "Rod Feuer co-founded Costello, acquired by Salesloft, and advises tech companies on strategy and positioning. He writes about AI.", "sameAs": ["https://www.linkedin.com/in/rodfeuer/", "https://x.com/rodfeuer"]}]}</script>
 <script data-goatcounter="https://rodfeuer.goatcounter.com/count"
@@ -45,14 +46,18 @@ a{color:var(--accent);text-underline-offset:3px}
 <main>
 <div class="who"><img src="headshot.jpg" width="112" height="112" alt="Rod Feuer"><h1>Rod Feuer</h1></div>
 <p class="bio">Rod Feuer is a product and strategy executive. He co-founded Costello, an AI sales software company acquired by Salesloft in 2019, and was COO of Signpost, where revenue grew fourfold. He runs Indian Cherry Partners, which advises PE- and VC-backed technology companies on strategy and positioning. He writes about how AI changes both.</p>
+<section>
 <p class="kicker">Writing</p>
 <div class="post">
-<a href="where-the-ai-money-goes/">Where the AI money goes</a>
-<p>AI's most defensible business may be one VCs can't buy. Six VC firms, 597 AI deals, and where the dollars went.</p>
+<a href="where-the-ai-money-goes/">Where AI venture dollars go vs. where strategy predicts durable profit</a>
+<p>In 597 AI rounds that six VC firms joined, frontier labs got 70% of the dollars. Systems of record, one place strategy predicts durable profit, got only 0.2%.</p>
 <div class="date">November 2026</div>
 </div>
+</section>
+<section>
 <p class="kicker">Elsewhere</p>
-<p><a rel="me" href="https://www.linkedin.com/in/rodfeuer/" data-goatcounter-click="ext-linkedin-profile">LinkedIn</a> · <a rel="me" href="https://x.com/rodfeuer" data-goatcounter-click="ext-x-profile">X</a></p>
+<p class="links"><a rel="me" href="https://www.linkedin.com/in/rodfeuer/" data-goatcounter-click="ext-linkedin-profile">LinkedIn</a> · <a rel="me" href="https://x.com/rodfeuer" data-goatcounter-click="ext-x-profile">X</a></p>
+</section>
 <p class="privacy">This site counts page views and link clicks with GoatCounter, which sets no cookies and does not track you across sites.</p>
 </main>
 </body>

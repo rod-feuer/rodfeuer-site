@@ -13,10 +13,10 @@ LINKEDIN = "https://www.linkedin.com/in/rodfeuer/"
 X_PROFILE = "https://x.com/rodfeuer"
 PUBLISHED = "2026-11"      # month only: the exact first-publish day is not recorded
 MODIFIED = "2026-11-25"
-TITLE = "Where the AI money goes"
-DESC = "597 AI deals and $357B across six VC firms: where strategy says durable profit goes, and where the dollars went."
+TITLE = "Where AI venture dollars go vs. where strategy predicts durable profit"
+DESC = "In 597 AI rounds that six VC firms joined, frontier labs got 70% of the dollars. Systems of record, one place strategy predicts durable profit, got only 0.2%."
 src = SRC.read_text(encoding="utf-8")
-src = src.replace('<title>Where the AI Money Goes</title>', f'<title>{TITLE}</title>', 1)
+src = src.replace('<title>Where AI Venture Dollars Go vs. Where Strategy Predicts Durable Profit</title>', f'<title>{TITLE}</title>', 1)
 src = src.replace('<meta name="claude:viewport-fit-sides" content="cover">\n', '', 1)
 head_meta = f'''<!doctype html>
 <html lang="en">
