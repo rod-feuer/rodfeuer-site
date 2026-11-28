@@ -60,7 +60,7 @@ i = body.index('<section class="keyfacts"')
 body = body[:i] + byline + body[i:]
 # count clicks on outbound links (GoatCounter reads data-goatcounter-click); one event name per link: ext-<host>/<first path segment>
 def tag_outbound(m):
-    host, path = m.group(2), m.group(3).strip("/").split("/")[0]
+    host, path = m.group(2), (m.group(3) or "").strip("/").split("/")[0]
     return m.group(1) + ' data-goatcounter-click="ext-' + host + ("/" + path if path else "") + '"'
 body = re.sub(r'(<a href="https?://(?!rodfeuer\.com)([^/"]+)(/[^"]*)?")', tag_outbound, body)
 # the one SVG icon without a label is decorative; the routes diagram needs a label
