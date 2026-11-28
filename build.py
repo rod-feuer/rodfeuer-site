@@ -3,7 +3,7 @@
 Run:  python3 build.py   (reads ../ai-theses-handoff/reports/where-the-ai-money-goes.html)
 Writes where-the-ai-money-goes/index.html. index.html, og.png, robots.txt and sitemap.xml are hand-kept.
 """
-import json, re, subprocess, sys
+import datetime, json, re, subprocess, sys
 from pathlib import Path
 SRC = Path(__file__).resolve().parent.parent / "ai-theses-handoff" / "reports" / "where-the-ai-money-goes.html"
 OUT = Path(__file__).resolve().parent / "where-the-ai-money-goes" / "index.html"
@@ -11,7 +11,7 @@ SITE = "https://rodfeuer.com"
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 LINKEDIN = "https://www.linkedin.com/in/rodfeuer/"
 X_PROFILE = "https://x.com/rodfeuer"
-PUBLISHED = "2026-11"      # month only: the exact first-publish day is not recorded
+PUBLISHED = "2026-11-23"   # the day rodfeuer.com went live (CNAME commit, Nov 23, 2026)
 MODIFIED = "2026-11-27"
 TITLE = "Where AI venture dollars have gone vs. where strategy predicts durable profit will go"
 DESC = "In 597 AI rounds that six VC firms joined, frontier labs got 70% of the dollars. Systems of record, one place strategy predicts durable profit, got only 0.2%."
@@ -54,7 +54,8 @@ cut = src.index("</style>") + len("</style>")
 body = src[cut:]
 # byline + machine-readable date (key findings now come from build_article.py)
 byline = ('<p class="byline">By <a href="' + SITE + '/" rel="author">Rod Feuer</a> \u00b7 '
-          '<time datetime="' + PUBLISHED + '">November 2026</time></p>\n')
+          '<time datetime="' + PUBLISHED + '">November 23, 2026</time> \u00b7 '
+          'Updated <time datetime="' + MODIFIED + '">' + datetime.date.fromisoformat(MODIFIED).strftime("%B %-d, %Y") + '</time></p>\n')
 
 i = body.index('<section class="keyfacts"')
 body = body[:i] + byline + body[i:]
